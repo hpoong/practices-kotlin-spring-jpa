@@ -35,6 +35,11 @@ dependencies {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
 
+
+	// thymeleaf
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+	implementation("org.springframework.boot:spring-boot-devtools")
+
 	// Mariadb
 	implementation("org.mariadb.jdbc:mariadb-java-client:3.3.2")
 
