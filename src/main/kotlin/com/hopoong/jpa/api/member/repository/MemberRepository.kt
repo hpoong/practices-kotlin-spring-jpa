@@ -1,6 +1,6 @@
 package com.hopoong.jpa.api.member.repository
 
-import com.hopoong.jpa.api.member.model.Member
+import com.hopoong.jpa.entity.Member
 import org.springframework.stereotype.Repository
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
