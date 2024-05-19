@@ -1,6 +1,7 @@
 package com.hopoong.jpa.entity
 
 import com.hopoong.jpa.entity.status.OrderStatus
+import org.hibernate.annotations.Comment
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -8,23 +9,36 @@ import javax.persistence.*
 @Table(name = "hcc_orders")
 data class Order(
 
+    // ************* Column
+
+    @Comment("PK")
     @Id @GeneratedValue
     @Column(name = "hcc_orders_id")
     val id: Long = 0L,
 
+    @Comment("회원 FK")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hcc_member_id")
     var member: Member,
 
-    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL])
-    var orderItems: MutableList<OrderItem> = mutableListOf(),
-
+    @Comment("배송 FK")
     @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinColumn(name = "hcc_delivery_id")
     var delivery: Delivery,
 
+    @Comment("주문시간")
     var orderDate: LocalDateTime,
 
+    @Comment("주문상태")
     @Enumerated(EnumType.STRING)
     var status: OrderStatus,
+
+
+
+    // *************
+
+
+    @Comment("주문 상세 Table")
+    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL])
+    var orderItems: MutableList<OrderItem> = mutableListOf(),
 )

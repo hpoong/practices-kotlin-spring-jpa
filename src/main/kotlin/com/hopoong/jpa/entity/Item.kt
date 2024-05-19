@@ -1,5 +1,6 @@
 package com.hopoong.jpa.entity
 
+import org.hibernate.annotations.Comment
 import javax.persistence.*
 
 
@@ -9,17 +10,28 @@ import javax.persistence.*
 @Table(name = "hcc_item")
 abstract class Item (
 
-    @Id
-    @GeneratedValue
+
+    // ************* Column
+
+    @Comment("PK")
+    @Id @GeneratedValue
     @Column(name = "hcc_item_id")
     val id: Long = 0L,
 
+    @Comment("상품이름")
     var name: String,
 
+    @Comment("상품가격")
     var price: Int,
 
+    @Comment("재고수량")
     var stockQuantity: Int,
 
+
+
+    // *************
+
+    @Comment("상품 카테고리 Table")
     @ManyToMany(mappedBy = "items")
     var categories: MutableList<Category> = ArrayList()
 )
