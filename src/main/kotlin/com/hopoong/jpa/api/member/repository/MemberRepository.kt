@@ -11,12 +11,21 @@ class MemberRepository {
     @PersistenceContext
     private lateinit var em: EntityManager
 
-    fun saveEmTest(member: Member): Long {
-        em.persist(member)
-        return member.id
+    fun findByName(name: String): MutableList<Member> {
+        return em.createQuery("select m from Member m where m.name = :name", Member::class.java)
+            .setParameter("name", name)
+            .resultList
     }
 
-    fun findEmTest(id: Long?): Member {
+    fun save(member: Member) {
+        em.persist(member)
+    }
+
+    fun findAll(): MutableList<Member> {
+        return em.createQuery("select m from Member m", Member::class.java).resultList
+    }
+
+    fun findOne(id: Long): Member {
         return em.find(Member::class.java, id)
     }
 }
