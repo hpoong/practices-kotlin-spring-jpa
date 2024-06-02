@@ -8,5 +8,5 @@ open class UpdateItemDto (
     var price: Int,
     var stockQuantity: Int,
 ) {
-    fun ofEntity(): Item = Item(name=this.name, price=this.price, stockQuantity=this.stockQuantity)
+//    fun ofEntity(): Item = Item(name=this.name, price=this.price, stockQuantity=this.stockQuantity)
 }
