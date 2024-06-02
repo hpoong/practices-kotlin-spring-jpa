@@ -12,8 +12,8 @@ import org.springframework.web.context.request.ServletRequestAttributes
 import java.util.*
 import javax.servlet.http.HttpServletRequest
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 class LoggerAspect {
 
     private val log = LoggerFactory.getLogger(this::class.java)

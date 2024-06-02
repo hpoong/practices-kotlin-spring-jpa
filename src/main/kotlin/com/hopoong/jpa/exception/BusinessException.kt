@@ -2,7 +2,7 @@ package com.hopoong.jpa.exception
 
 import com.hopoong.jpa.response.CommonCode
 
-class BusinessException: Exception {
+class BusinessException: IllegalStateException {
 
     val code: CommonCode
     override val message: String

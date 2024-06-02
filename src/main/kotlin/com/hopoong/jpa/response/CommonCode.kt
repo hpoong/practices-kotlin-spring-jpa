@@ -9,6 +9,8 @@ enum class CommonCode(
     val type: String,
 ) {
     DEMO("C01", "Demo"),
+    MEMBER("C03", "Member"),
+    ITEM("C03", "Item"),
     SERVER("C09", "Server"),
     ;
 }
