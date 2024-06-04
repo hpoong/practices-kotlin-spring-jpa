@@ -14,7 +14,7 @@ data class Order(
     @Comment("PK")
     @Id @GeneratedValue
     @Column(name = "hcc_orders_id")
-    val id: Long = 0L,
+    val id: Long? = null,
 
     @Comment("회원 FK")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -41,4 +41,23 @@ data class Order(
     @Comment("주문 상세 Table")
     @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL])
     var orderItems: MutableList<OrderItem> = mutableListOf(),
-)
+) {
+
+    companion object {
+        fun createOrder(member: Member, delivery: Delivery, vararg orderItems: OrderItem): Order? {
+//            Order(member = member, delivery = delivery )
+//
+//            for (orderItem in orderItems) {
+//                order.addOrderItem(orderItem)
+//            }
+            return null
+        }
+    }
+
+    fun addOrderItem(orderItem: OrderItem) {
+        orderItems.add(orderItem)
+        orderItem.order = this
+    }
+
+
+}

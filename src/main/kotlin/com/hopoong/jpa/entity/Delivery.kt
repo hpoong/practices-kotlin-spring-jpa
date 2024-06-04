@@ -14,7 +14,7 @@ class Delivery(
     @Comment("PK")
     @Id @GeneratedValue
     @Column(name = "hcc_delivery_id")
-    var id: Long,
+    var id: Long? = null,
 
     @Comment("배송정보")
     @Embedded
@@ -22,12 +22,12 @@ class Delivery(
 
     @Comment("배송상태")
     @Enumerated(EnumType.STRING)
-    var status: DeliveryStatus,
+    var status: DeliveryStatus? = null,
 
 
     // *************
 
     @Comment("주문 Table")
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
-    var order: Order,
+    var order: Order? = null,
 )
