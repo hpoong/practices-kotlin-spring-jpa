@@ -44,13 +44,20 @@ data class Order(
 ) {
 
     companion object {
-        fun createOrder(member: Member, delivery: Delivery, vararg orderItems: OrderItem): Order? {
-//            Order(member = member, delivery = delivery )
-//
-//            for (orderItem in orderItems) {
-//                order.addOrderItem(orderItem)
-//            }
-            return null
+
+
+
+        /*
+         * 주문을 생성하고 주문 상세에 넣는다.
+         */
+        fun createOrder(member: Member, delivery: Delivery, vararg orderItems: OrderItem): Order {
+            var order = Order(member = member, delivery = delivery, status = OrderStatus.ORDER, orderDate = LocalDateTime.now())
+
+            for (orderItem in orderItems) {
+                order.addOrderItem(orderItem)
+            }
+
+            return order
         }
     }
 
