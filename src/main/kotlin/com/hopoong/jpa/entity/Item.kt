@@ -1,6 +1,5 @@
 package com.hopoong.jpa.entity
 
-import com.hopoong.jpa.api.item.dto.UpdateItemDto
 import org.hibernate.annotations.Comment
 import javax.persistence.*
 
@@ -17,7 +16,7 @@ abstract class Item (
     @Comment("PK")
     @Id @GeneratedValue
     @Column(name = "hcc_item_id")
-    val id: Long = 0L,
+    val id: Long? = null,
 
     @Comment("상품이름")
     var name: String,
@@ -37,10 +36,10 @@ abstract class Item (
     var categories: MutableList<Category> = ArrayList()
 ) {
 
-    fun change(updateItemDto: UpdateItemDto) {
-        name = updateItemDto.name
-        price = updateItemDto.price
-        stockQuantity = updateItemDto.stockQuantity
-    }
+//    fun change(updateItemDto: UpdateItemDto) {
+//        name = updateItemDto.name
+//        price = updateItemDto.price
+//        stockQuantity = updateItemDto.stockQuantity
+//    }
 
 }

@@ -26,15 +26,15 @@ class ItemService(
     /*
      * 상품 등록 수정
      */
-    @Transactional
-    fun updateItem(itemId: Long, updateItemDto: UpdateItemDto) {
-
-        // findItem은 영속성 엔티티이므로 set만 해주면 jpa가 commit 시점에 db에 쿼리 날려줌(변경 감지)
-        val findItem = itemRepository.findOne(itemId)
-
-        Optional.ofNullable(findItem)
-            .ifPresentOrElse({ data -> data.change(updateItemDto) }) { throw BusinessException(CommonCode.ITEM, "회원이 없습니다") }
-    }
+//    @Transactional
+//    fun updateItem(itemId: Long, updateItemDto: UpdateItemDto) {
+//
+//        // findItem은 영속성 엔티티이므로 set만 해주면 jpa가 commit 시점에 db에 쿼리 날려줌(변경 감지)
+//        val findItem = itemRepository.findOne(itemId)
+//
+//        Optional.ofNullable(findItem)
+//            .ifPresentOrElse({ data -> data.change(updateItemDto) }) { throw BusinessException(CommonCode.ITEM, "회원이 없습니다") }
+//    }
 
     /*
      * 상품 목록 전체 조회

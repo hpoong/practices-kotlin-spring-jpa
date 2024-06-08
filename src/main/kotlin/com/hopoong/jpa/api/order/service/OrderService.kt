@@ -4,8 +4,11 @@ import com.hopoong.jpa.api.item.repository.ItemRepository
 import com.hopoong.jpa.api.member.repository.MemberRepository
 import com.hopoong.jpa.api.order.repository.OrderRepository
 import com.hopoong.jpa.entity.*
+import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
+@Transactional(readOnly = true)
+@Service
 class OrderService(
     private val orderRepository: OrderRepository,
     private val memberRepository: MemberRepository,
@@ -16,7 +19,7 @@ class OrderService(
      * 주문
      */
     @Transactional
-    fun order(memberId: Long, itemId: Long, count: Int): Long {
+    fun order(memberId: Long, itemId: Long, count: Int) {
 
         // 엔티티 조회
         var member: Member = memberRepository.findOne(memberId)
@@ -31,6 +34,11 @@ class OrderService(
         //주문 생성
         val order: Order = Order.createOrder(member, delivery, orderItem)
 
-        return 1
+        orderRepository.save(order)
     }
 }
+
+//fun main() {
+//    var test = OrderService(OrderRepository(), MemberRepository(), ItemRepository())
+//    test.order()
+//}

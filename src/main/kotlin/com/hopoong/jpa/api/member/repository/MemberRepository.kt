@@ -1,6 +1,6 @@
 package com.hopoong.jpa.api.member.repository
 
-import com.hopoong.jpa.api.member.dto.MemberAllDTO
+import com.hopoong.jpa.api.member.dto.RegisterMemberDTO
 import com.hopoong.jpa.entity.Member
 import org.springframework.stereotype.Repository
 import javax.persistence.EntityManager
@@ -22,9 +22,9 @@ class MemberRepository {
         em.persist(member)
     }
 
-    fun findAll(): MutableList<MemberAllDTO> {
+    fun findAll(): MutableList<RegisterMemberDTO> {
         return em.
-            createQuery("select new com.hopoong.jpa.api.member.dto.MemberAllDTO(m.name, m.address) from Member m", MemberAllDTO::class.java)
+            createQuery("select new com.hopoong.jpa.api.member.dto.RegisterMemberDTO(m.name, m.address) from Member m", RegisterMemberDTO::class.java)
             .resultList
     }
 

@@ -11,8 +11,13 @@ import javax.transaction.Transactional
 @Repository
 class OrderRepository() {
 
+
     @PersistenceContext
     private lateinit var em: EntityManager
+
+    fun save(order: Order) {
+        em.persist(order)
+    }
 
 
 }

@@ -14,7 +14,7 @@ data class Member(
     @Comment("PK")
     @Id @GeneratedValue
     @Column(name = "hcc_member_id")
-    val id: Long = 0L,
+    val id: Long? = null,
 
     @Comment("이름")
     @Column(name = "name", nullable = false)

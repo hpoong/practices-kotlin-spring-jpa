@@ -1,7 +1,7 @@
 package com.hopoong.jpa.entity
 
 import com.hopoong.jpa.entity.embeddable.Address
-import com.hopoong.jpa.entity.status.DeliveryStatus
+import com.hopoong.jpa.entity.enums.DeliveryStatus
 import org.hibernate.annotations.Comment
 import javax.persistence.*
 

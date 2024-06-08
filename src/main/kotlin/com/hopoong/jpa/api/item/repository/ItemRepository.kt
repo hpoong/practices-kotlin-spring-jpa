@@ -1,8 +1,6 @@
 package com.hopoong.jpa.api.item.repository
 
-import com.hopoong.jpa.api.member.dto.MemberAllDTO
 import com.hopoong.jpa.entity.Item
-import com.hopoong.jpa.entity.Member
 import org.springframework.stereotype.Repository
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext

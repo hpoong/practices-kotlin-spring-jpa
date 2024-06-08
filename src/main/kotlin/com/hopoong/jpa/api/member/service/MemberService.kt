@@ -1,6 +1,6 @@
 package com.hopoong.jpa.api.member.service
 
-import com.hopoong.jpa.api.member.dto.MemberAllDTO
+import com.hopoong.jpa.api.member.dto.RegisterMemberDTO
 import com.hopoong.jpa.api.member.repository.MemberRepository
 import com.hopoong.jpa.entity.Member
 import org.springframework.stereotype.Service
@@ -16,16 +16,15 @@ class MemberService(
      * 회원 가입
      */
     @Transactional
-    fun join(member: Member): Long {
-        validateDuplicateMember(member)
-        memberRepository.save(member)
-        return member.id
+    fun join(member: RegisterMemberDTO) {
+        validateDuplicateMember(member.toEntity())
+        memberRepository.save(member.toEntity())
     }
 
     /*
      * 회원 전체 조회
      */
-    fun findAll(): MutableList<MemberAllDTO> {
+    fun findAll(): MutableList<RegisterMemberDTO> {
         return memberRepository.findAll()
     }
 
@@ -40,8 +39,8 @@ class MemberService(
      * 회원 중복체크
      */
     private fun validateDuplicateMember(member: Member) {
-        val test: MutableList<Member> = memberRepository.findByName(member.name)
-        if(!test.isEmpty())
+        val member: MutableList<Member> = memberRepository.findByName(member.name)
+        if(!member.isEmpty())
             throw IllegalStateException("이미 존재하는 회원입니다.")
     }
 }

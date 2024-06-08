@@ -1,6 +1,6 @@
 package com.hopoong.jpa.entity
 
-import com.hopoong.jpa.entity.status.OrderStatus
+import com.hopoong.jpa.entity.enums.OrderStatus
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime
 import javax.persistence.*
