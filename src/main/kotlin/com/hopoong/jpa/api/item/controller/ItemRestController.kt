@@ -17,12 +17,12 @@ class ItemRestController(
 
     @PostMapping(value = ["/items"])
     fun saveItem(@RequestBody registerItemDto: RegisterItemDto) {
-        itemService.saveItem(registerItemDto.toEntity())
+        itemService.saveItem(registerItemDto)
     }
 
     @PutMapping(value = ["/items"])
     fun getMembers(@RequestBody updateItemDto: UpdateItemDto) {
-//        itemService.updateItem(updateItemDto.id, updateItemDto)
+        itemService.updateItem(updateItemDto.id, updateItemDto)
     }
 
 }

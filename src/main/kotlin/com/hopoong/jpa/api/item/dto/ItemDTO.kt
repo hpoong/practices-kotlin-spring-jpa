@@ -9,12 +9,7 @@ data class RegisterItemDto(
     var stockQuantity: Int,
     var author: String,
     var isbn: String,
-) {
-
-    fun toEntity(): Item {
-        return Book(name = this.name, price = this.price, stockQuantity = this.stockQuantity, author = this.author, isbn = this.author)
-    }
-}
+)
 
 data class UpdateItemDto(
     var id: Long,

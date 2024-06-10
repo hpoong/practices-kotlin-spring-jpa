@@ -1,5 +1,7 @@
 package com.hopoong.jpa.entity
 
+import com.hopoong.jpa.api.item.dto.RegisterItemDto
+import com.hopoong.jpa.api.item.dto.UpdateItemDto
 import org.hibernate.annotations.Comment
 import javax.persistence.*
 
@@ -36,10 +38,14 @@ abstract class Item (
     var categories: MutableList<Category> = ArrayList()
 ) {
 
-//    fun change(updateItemDto: UpdateItemDto) {
-//        name = updateItemDto.name
-//        price = updateItemDto.price
-//        stockQuantity = updateItemDto.stockQuantity
-//    }
+
+    fun updateItem(updateItemDto: UpdateItemDto) {
+        name = updateItemDto.name
+        price = updateItemDto.price
+        stockQuantity = updateItemDto.stockQuantity
+    }
+
+
+
 
 }
