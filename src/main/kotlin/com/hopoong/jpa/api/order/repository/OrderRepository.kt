@@ -19,6 +19,10 @@ class OrderRepository() {
         em.persist(order)
     }
 
+    fun findOne(orderId: Long): Order? {
+        return em.find(Order::class.java, orderId)
+    }
+
 
 }
 

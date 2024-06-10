@@ -31,11 +31,17 @@ class OrderItem(
     @Comment("주문수량")
     var count: Int,
 ) {
+
+
     companion object {
 
         fun createOrderItem(item: Item, orderPrice: Int, count: Int): OrderItem {
             return OrderItem(item = item, orderPrice = orderPrice, count = count)
         }
+    }
+
+    fun cancel() {
+        TODO("Not yet implemented")
     }
 
 }

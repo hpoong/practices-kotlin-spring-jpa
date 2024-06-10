@@ -1,6 +1,9 @@
 package com.hopoong.jpa.entity
 
+import com.hopoong.jpa.entity.enums.DeliveryStatus
 import com.hopoong.jpa.entity.enums.OrderStatus
+import com.hopoong.jpa.exception.BusinessException
+import com.hopoong.jpa.response.CommonCode
 import org.hibernate.annotations.Comment
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -64,6 +67,22 @@ data class Order(
     fun addOrderItem(orderItem: OrderItem) {
         orderItems.add(orderItem)
         orderItem.order = this
+    }
+
+    /*
+     * 주문취소
+     */
+    fun cancel() {
+        if(delivery.status == DeliveryStatus.COMP) {
+            throw BusinessException(CommonCode.ORDER, "이미 배송완료된 상품은 취소가 불가능합니다.")
+        }
+
+        this.status = OrderStatus.ORDER
+
+        // 주문 상세 1:N
+        for (orderItem in orderItems) {
+            orderItem.cancel()
+        }
     }
 
 
