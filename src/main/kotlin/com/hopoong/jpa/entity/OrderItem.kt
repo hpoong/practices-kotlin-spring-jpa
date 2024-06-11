@@ -36,12 +36,19 @@ class OrderItem(
     companion object {
 
         fun createOrderItem(item: Item, orderPrice: Int, count: Int): OrderItem {
-            return OrderItem(item = item, orderPrice = orderPrice, count = count)
+            var orderItem = OrderItem(item = item, orderPrice = orderPrice, count = count)
+            
+            // 재고 수량 변경
+            item.removeStock(count)
+            return orderItem;
         }
     }
 
+    /*
+     * 주문 취소
+     */
     fun cancel() {
-        TODO("Not yet implemented")
+        item.addStock(count) // 취소시 재고 수량 변경
     }
 
 }

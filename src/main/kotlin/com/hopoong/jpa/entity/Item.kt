@@ -2,6 +2,8 @@ package com.hopoong.jpa.entity
 
 import com.hopoong.jpa.api.item.dto.RegisterItemDto
 import com.hopoong.jpa.api.item.dto.UpdateItemDto
+import com.hopoong.jpa.exception.BusinessException
+import com.hopoong.jpa.response.CommonCode
 import org.hibernate.annotations.Comment
 import javax.persistence.*
 
@@ -45,7 +47,23 @@ abstract class Item (
         stockQuantity = updateItemDto.stockQuantity
     }
 
+    /*
+     * 재고 수량 증가
+     */
+    fun addStock(count: Int) {
+        stockQuantity += count
+    }
 
+    /*
+     * 재고 수량 감소
+     */
+    fun removeStock(count: Int) {
+        val restStock: Int = stockQuantity - count
+        if (restStock < 0) {
+            throw BusinessException(CommonCode.ORDER, "재고 수량을 확인해세요")
+        }
+        stockQuantity = restStock
+    }
 
 
 }
