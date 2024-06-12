@@ -1,5 +1,7 @@
 package com.hopoong.jpa.api.order.dto
 
+import com.hopoong.jpa.entity.enums.OrderStatus
+
 class OrderDto {
 
     data class RegisterDto(
@@ -13,5 +15,11 @@ class OrderDto {
     data class CancelDto(
         var orderId: Long
     )
+
+    data class OrderSearchDto(
+        var memberName: String,
+        var orderStatus: OrderStatus
+    )
+
 }
 

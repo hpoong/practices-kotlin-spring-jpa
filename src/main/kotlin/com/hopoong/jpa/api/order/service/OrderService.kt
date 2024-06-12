@@ -49,26 +49,16 @@ class OrderService(
     @Transactional
     fun cancelOrder(cancelDto: OrderDto.CancelDto) {
 
-        /**
-         * hcc_item
-         * hcc_orderitem
-         * hcc_delivery
-         * hcc_orders
-         *
-         * 아이템 / 주문 상품 / 배송 / 주문을 select 를 한다.
-         *
-         */
-
         // 주문 엔티티 조회
         var order = orderRepository.findOne(cancelDto.orderId)
 
-        /**
-         * update 진행
-         */
         Optional.ofNullable(order)
             .ifPresentOrElse({ data -> data.cancel() })
                 { throw BusinessException(CommonCode.ORDER, "주문 번호를 확인해주세요") }
+    }
 
+    fun findOrders(orderSearchDto: OrderDto.OrderSearchDto): MutableList<Order>? {
+        return orderRepository.findAllByCriteria(orderSearchDto)
     }
 
 
