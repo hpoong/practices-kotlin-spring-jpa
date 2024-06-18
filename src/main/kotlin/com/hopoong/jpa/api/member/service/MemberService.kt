@@ -16,9 +16,11 @@ class MemberService(
      * 회원 가입
      */
     @Transactional
-    fun join(member: RegisterMemberDTO) {
-        validateDuplicateMember(member.toEntity())
-        memberRepository.save(member.toEntity())
+    fun join(memberDto: RegisterMemberDTO): Long? {
+        var member = memberDto.toEntity()
+        validateDuplicateMember(member)
+        memberRepository.save(member)
+        return member.id
     }
 
     /*

@@ -57,6 +57,9 @@ class OrderService(
                 { throw BusinessException(CommonCode.ORDER, "주문 번호를 확인해주세요") }
     }
 
+    /*
+     * 주문 검색
+     */
     fun findOrders(orderSearchDto: OrderDto.OrderSearchDto): MutableList<Order>? {
         return orderRepository.findAllByCriteria(orderSearchDto)
     }
