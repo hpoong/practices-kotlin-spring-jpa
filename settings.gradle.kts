@@ -1,1 +1,3 @@
-rootProject.name = "kotlin-spring-jpa"
+rootProject.name = "kotlin-spring-jpa-module"
+
+include("kotlin-jpa-v1")
