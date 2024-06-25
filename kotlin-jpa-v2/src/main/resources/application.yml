@@ -1,0 +1,28 @@
+
+server:
+  port: 4000
+
+
+spring:
+  datasource:
+    url: jdbc:mariadb://${DB_Address}:${DB_Prot}/${DB_Name}
+    username: ${DB_Username}
+    password: ${DB_Password}
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+
+logging:
+  level:
+    p6spy: info
+  config: classpath:logback/logback-srping.xml
