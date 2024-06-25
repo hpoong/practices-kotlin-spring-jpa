@@ -13,5 +13,6 @@ enum class CommonCode(
     ITEM("C03", "Item"),
     ORDER("C04", "Order"),
     SERVER("C09", "Server"),
+    VALID("C10", "Valid"),
     ;
 }

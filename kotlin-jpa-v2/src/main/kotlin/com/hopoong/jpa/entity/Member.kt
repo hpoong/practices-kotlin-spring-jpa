@@ -25,15 +25,14 @@ data class Member(
 
 
 
-
     // *************
 
 
-    @Comment("회원 Table")
-    @OneToMany(mappedBy = "member")                         // Order Class 필드명
-    var orders: MutableList<Order> = mutableListOf(),       // NullPointerException
+//    @Comment("회원 Table")
+//    @OneToMany(mappedBy = "member")                         // Order Class 필드명
+//    var orders: MutableList<Order> = mutableListOf(),       // NullPointerException
 
-    @Comment("주문 Table")
-    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL])
-    var orderItems: MutableList<OrderItem> = mutableListOf(),
+//    @Comment("주문 Table")
+//    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL])
+//    var orderItems: MutableList<OrderItem> = mutableListOf(),
 )
